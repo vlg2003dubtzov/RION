@@ -1,4 +1,4 @@
-// OLAM: меню на телефоне и окно оплаты по СБП.
+// РИОН: меню на телефоне и окно оплаты по СБП.
 (() => {
   "use strict";
 
@@ -13,7 +13,7 @@
   }
 
   // ---------- оплата ----------
-  const dataEl = document.getElementById("olam-pay");
+  const dataEl = document.getElementById("pay-data");
   const dlg = document.getElementById("pay-dialog");
   if (!dataEl || !dlg) return;
   const cfg = JSON.parse(dataEl.textContent);
@@ -52,7 +52,7 @@
       links.push(`<a class="btn btn--primary btn--small" href="https://t.me/${encodeURIComponent(cfg.telegram)}" target="_blank" rel="noopener">Написать в Telegram</a>`);
     }
     if (cfg.email) {
-      const q = "subject=" + encodeURIComponent("Оплата заказа на OLAM") + "&body=" + encodeURIComponent(message);
+      const q = "subject=" + encodeURIComponent("Оплата заказа на платформе РИОН") + "&body=" + encodeURIComponent(message);
       links.push(`<a class="btn btn--ghost btn--small" href="mailto:${esc(cfg.email)}?${q}">Написать на почту</a>`);
     }
     return links.join("");
