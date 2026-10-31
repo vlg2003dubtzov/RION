@@ -65,7 +65,7 @@
     const msg = `Здравствуйте! Сообщите, пожалуйста, когда можно будет купить «${p.name}».`;
     const links = contactLinks(msg);
     return `
-<p class="eyebrow">Полная версия</p>
+<p class="eyebrow">Доступ</p>
 <h2 id="pay-title">${esc(p.name)}</h2>
 <p class="pay__price">${esc(p.priceText)}</p>
 <p>Продажа скоро откроется: мы подключаем оплату.${links ? " Напишите нам — сообщим, когда можно будет купить." : ""}</p>
@@ -84,7 +84,7 @@ ${links ? `<div class="pay__actions">${links}</div>` : ""}`;
     const last = opts.account
       ? `<li><b>Готово.</b> Мы проверим перевод по коду и откроем игру в <a href="${esc(api.config.account)}">кабинете</a> — в течение ${esc(cfg.hours)} часов. Хотите быстрее — напишите нам.
 <div class="pay__actions">${contactLinks(msg)}</div></li>`
-      : `<li><b>Напишите нам об оплате.</b> Ссылку на скачивание и чек из «Мой налог» пришлём в течение ${esc(cfg.hours)} часов.
+      : `<li><b>Напишите нам об оплате.</b> Ссылки на игры и чек из «Мой налог» пришлём в течение ${esc(cfg.hours)} часов.
 <div class="pay__actions">${contactLinks(msg)}<button type="button" class="btn btn--ghost btn--small" data-copy="${esc(msg)}">Скопировать сообщение</button></div></li>`;
     return `
 <p class="eyebrow">Оплата по СБП</p>
@@ -109,10 +109,10 @@ ${last}
     const next = encodeURIComponent(location.pathname + "?buy=" + id);
     const acc = api.config.account;
     return `
-<p class="eyebrow">Полная версия</p>
+<p class="eyebrow">Доступ</p>
 <h2 id="pay-title">${esc(p.name)}</h2>
 <p class="pay__price">${esc(p.priceText)}</p>
-<p>Войдите в личный кабинет — после оплаты игра и файлы для скачивания появятся в нём.</p>
+<p>Войдите в личный кабинет — после оплаты игры и файлы для скачивания появятся в нём.</p>
 <div class="pay__actions">
 <a class="btn btn--primary btn--small" href="${esc(acc)}?next=${next}">Войти</a>
 <a class="btn btn--ghost btn--small" href="${esc(acc)}?mode=register&amp;next=${next}">Завести кабинет</a>
@@ -121,7 +121,7 @@ ${last}
   }
 
   function renderWait(p) {
-    return `<p class="eyebrow">Полная версия</p><h2 id="pay-title">${esc(p.name)}</h2><p class="pay__price">${esc(p.priceText)}</p><p class="muted">Готовим оплату…</p>`;
+    return `<p class="eyebrow">Доступ</p><h2 id="pay-title">${esc(p.name)}</h2><p class="pay__price">${esc(p.priceText)}</p><p class="muted">Готовим оплату…</p>`;
   }
 
   function renderChoose(p, server) {
@@ -141,7 +141,7 @@ ${server.robokassa ? `<button type="button" class="pay-method" data-method="robo
     return `
 <p class="eyebrow">Уже куплено</p>
 <h2 id="pay-title">${esc(p.name)}</h2>
-<p>Эта игра уже есть в вашем кабинете — файлы для скачивания там же.</p>
+<p>Этот доступ уже есть в вашем кабинете — файлы и ссылки там же.</p>
 <div class="pay__actions"><a class="btn btn--primary btn--small" href="${esc(api.config.account)}">Открыть кабинет</a></div>`;
   }
 
@@ -214,7 +214,7 @@ ${server.robokassa ? `<button type="button" class="pay-method" data-method="robo
 
   document.querySelectorAll("[data-buy]").forEach((btn) => btn.addEventListener("click", () => open(btn.dataset.buy)));
 
-  // После входа кабинет возвращает на страницу игры с ?buy=FG — сразу открываем покупку.
+  // После входа кабинет возвращает на страницу с ?buy=ALL — сразу открываем покупку.
   const buy = new URLSearchParams(location.search).get("buy");
   if (buy && cfg.products[buy]) {
     history.replaceState(null, "", location.pathname + location.hash);

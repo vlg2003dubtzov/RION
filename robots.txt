@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
+Disallow: /assets/games/
 Sitemap: https://vlg2003dubtzov.github.io/RION/sitemap.xml
