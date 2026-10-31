@@ -237,7 +237,7 @@ p { margin: 0 0 1em; }
 .steps li:nth-child(1) .steps__n { background: var(--brick-ink); border-radius: 50%; }
 .steps li:nth-child(2) .steps__n { background: var(--cobalt); border-radius: 4px; }
 .steps li:nth-child(3) .steps__n { background: var(--emerald-ink); border-radius: 50% 50% 4px 4px; }
-.steps-more { margin: 20px 0 0; }
+.steps-more { margin: 20px 0 0; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
 @media (max-width: 860px) { .steps { grid-template-columns: 1fr; } }
 
 .wrap.about-short { max-width: 760px; text-align: center; }
