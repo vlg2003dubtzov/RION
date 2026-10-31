@@ -214,7 +214,7 @@ ${server.robokassa ? `<button type="button" class="pay-method" data-method="robo
 
   document.querySelectorAll("[data-buy]").forEach((btn) => btn.addEventListener("click", () => open(btn.dataset.buy)));
 
-  // После входа кабинет возвращает на страницу с ?buy=ALL — сразу открываем покупку.
+  // После входа кабинет возвращает на страницу с ?buy=FG|ALL — сразу открываем покупку.
   const buy = new URLSearchParams(location.search).get("buy");
   if (buy && cfg.products[buy]) {
     history.replaceState(null, "", location.pathname + location.hash);
